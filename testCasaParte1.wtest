@@ -1,0 +1,9 @@
+import casa.*
+
+describe "casa de pepe y julian" {
+
+  // Descomentar si hiciera falta un metodo para inicializar el ambiente
+  // method initialize() {
+  // }
+
+}
