@@ -12,6 +12,7 @@ object casa {
 
     method cambioDeMes() {
       totalGastado = 0
+      estrategiaAhorro.mantener(self)
     }
 
     method cuentaPorDefecto(_cuentaPorDefecto) {
@@ -63,9 +64,9 @@ object casa {
       estrategiaAhorro = _estrategiaAhorro
     }
 
-    method mantemiento() {
+    /*method mantenimiento() {
       estrategiaAhorro.mantener(self)
-    }
+    }*/
 
     method saldo() {
       return cuentaPorDefecto.saldo()
@@ -139,7 +140,10 @@ object cuentaCombinada {
 
     method extraer(monto) {
         self.validarExtraer(monto)
+        var dePrimaria = 0.max(cuentaPrimaria.saldo()).min(monto) //0.max(100).min(80) = el min entre 100 y 80 = 80
 
+        cuentaPrimaria.extraer(dePrimaria) // extraigo 80
+        cuentaSecundaria.extraer(monto - dePrimaria) //extraigo el resto 100-80 = 20
     }
 
     method validarExtraer(monto) { // no se puede realizar ninguna extracción que supere ese monto.
@@ -150,6 +154,14 @@ object cuentaCombinada {
 
     method saldo() {
       return 0.max(cuentaPrimaria.saldo()) + 0.max(cuentaSecundaria.saldo())
+    }
+
+    method cuentaPrimaria(_cuentaPrimaria) {
+      cuentaPrimaria = _cuentaPrimaria
+    }
+
+    method cuentaSecundaria(_CuentaSecundaria) {
+      cuentaSecundaria = _CuentaSecundaria
     }
 }
 
@@ -171,13 +183,17 @@ object estrategiaFull {
     const calidad = 5
 
     method mantener(casa) {
-      if (casa.estaEnOrden()){
-        casa.comprarViveres(100 - casa.viveres(),calidad)
+      if (casa.estaEnOrden()) {
+        casa.comprarViveres(100 - casa.viveres(), calidad)
+      } else {
+        if (casa.viveres() < 40) {
+          casa.comprarViveres(40 - casa.viveres(), calidad)
+        }
+        
       }
-      else if (casa.viveres() < 40){
-         casa.comprarViveres(40 - casa.viveres(),calidad)
-      } else if(casa.hayQueHacerReparacion() && casa.saldo() >= casa.reparaciones()) {
-        casa.hacerReparaciones()
+
+      if (casa.hayQueHacerReparacion() && casa.saldo() >= casa.reparaciones()) {
+          casa.hacerReparaciones()
       }
     }
 }
