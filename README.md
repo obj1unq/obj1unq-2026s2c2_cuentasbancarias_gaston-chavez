@@ -217,7 +217,15 @@ La estrategia de mantenimiento es full.
    1. Qué nombre le pondrías al _tipo_ de los objetos polimórficos.
    2. Qué mensajes componen ese tipo.
    3. Quiénes usan los mensajes polimórficos.
+ 
+*Respuesta:
+* Elijo las cuentas bancarias.
+   1. el nombre del tipo seria cuentaBancaria
+   2. Los mensajes que componen son: depositar(monto), extraer(monto), saldo()
+   3. Los objetos que usan estos mensajes, son cuentaCorriente, cuentaGastos Y cuentaCombinada
     
 * Dibujar un diagrama estático en que se vea la relación entre los objetos y los tipos polimórficos
+* Link Diagrama:
 
 * Mencionar un mensaje que sea una orden y otro que sea una consulta
+  depositar(monto) es una orden y totalGastado() es una consulta
