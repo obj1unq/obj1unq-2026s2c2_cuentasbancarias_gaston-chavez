@@ -130,8 +130,8 @@ object cuentaGastos {
 }
 
 object cuentaCombinada {
-    var cuentaPrimaria = null
-    var cuentaSecundaria = null
+    var cuentaPrimaria = cuentaCorriente
+    var cuentaSecundaria = cuentaGastos
 
     method depositar(monto) {
       cuentaPrimaria.depositar(monto)
