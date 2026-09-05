@@ -186,15 +186,18 @@ object estrategiaFull {
       if (casa.estaEnOrden()) {
         casa.comprarViveres(100 - casa.viveres(), calidad)
       } else {
-        if (casa.viveres() < 40) {
+        if (self.comprarViveresSiFalta(casa)) {
           casa.comprarViveres(40 - casa.viveres(), calidad)
         }
-        
       }
 
       if (casa.hayQueHacerReparacion() && casa.saldo() >= casa.reparaciones()) {
           casa.hacerReparaciones()
       }
+    }
+
+    method comprarViveresSiFalta(casa) {
+      return casa.viveres() < 40
     }
 }
 

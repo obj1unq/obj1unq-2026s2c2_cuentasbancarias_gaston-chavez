@@ -225,7 +225,7 @@ La estrategia de mantenimiento es full.
    3. Los objetos que usan estos mensajes, son cuentaCorriente, cuentaGastos Y cuentaCombinada
     
 * Dibujar un diagrama estático en que se vea la relación entre los objetos y los tipos polimórficos
-* Link Diagrama:
+* Link Diagrama: https://imgur.com/moq94S4
 
 * Mencionar un mensaje que sea una orden y otro que sea una consulta
   depositar(monto) es una orden y totalGastado() es una consulta
